@@ -5,7 +5,8 @@ function init() {
   isaac.style.position = 'absolute';
   isaac.style.left = 50 + 'vw';
   isaac.style.top = '125px';
-  window.addEventListener('keydown', moveSelection);
+    window.addEventListener('keydown', moveSelection);
+    window.addEventListener('keyup', noMoment);
 }
 
 var finish = document.getElementById('finish');
@@ -18,22 +19,42 @@ function moveRight(){
 
 function moveLeft(){
   if (isaac.style.left != 0 + "vw"){
-    isaac.style.left = parseInt(isaac.style.left) - 5+ 'vw';                // checked
+    isaac.style.left = parseInt(isaac.style.left) - 5 + 'vw';                // checked
   }
 }
 
 function moveUp(){
 
   if (isaac.style.top != 125 + "px") {
-
-    isaac.style.top = parseInt(isaac.style.top) - 10 + 'px';                //chw
+      $('#isaac').attr("src","images/cross.gif");
+    isaac.style.top = parseInt(isaac.style.top) - 40 + 'px';                //chw
 
   }
 }
 function moveDown(){
-    if (isaac.style.top!=705+"px") {
-        isaac.style.top = parseInt(isaac.style.top) + 10 + 'px';
 
+    if (isaac.style.top!=700+"px") {
+        $('#isaac').attr("src","images/cross.gif");
+        isaac.style.top = parseInt(isaac.style.top) + 40 + 'px';
+
+    }
+}
+
+function wait() {
+    $('#isaac').attr("src","images/wait.gif");
+}
+
+function noMoment(event) {
+    switch (event.keyCode) {
+        case 37:
+                                                      //checked
+        case 39:
+
+        case 38:
+
+        case 40:
+
+        default: wait();
     }
 }
 
@@ -51,28 +72,42 @@ function moveSelection(evt) {
       case 40:
       moveDown();
       break;
+      default: wait();
       }
-  }
+
+}
+function hitMessage() {
+    alert('Oops! You\'ve been hit by a car!')
+    window.scrollTo(0,0);
+    window.location.reload();
+}
 var collision = setInterval(collisionDetect, 50);
 
 function collisionDetect() {
-   var car = document.getElementsByClassName("car");
+    var car = document.getElementsByClassName("car");
+    var isaac = document.getElementById('isaac');
+    for (var i = 0; i < 4; i++) {
 
-     for (var i in cars) {
-    //    console.log(car_key);}
-        // car = cars[car_key];
-    // console.log(car[0].offsetLeft);
-        // if (isaac.offsetLeft < car.offsetLeft + car.offsetWidth &&
-        //     isaac.offsetLeft + isaac.offsetWidth > car.offsetLeft &&
-        //     isaac.offsetTop < car.offsetTop + car.offsetHeight &&
-        //     isaac.offsetHeight + isaac.offsetTop > car.offsetTop) {
-        //     alert('Oops! You\'ve been hit by a car!');
-        //
-        // }
 
+        if (isaac.offsetLeft < car[i].offsetLeft + car[i].offsetWidth &&
+            isaac.offsetLeft + isaac.offsetWidth > car[i].offsetLeft &&
+            isaac.offsetTop < car[i].offsetTop + car[i].offsetHeight &&
+            isaac.offsetHeight + isaac.offsetTop > car[i].offsetTop) {
+
+            $('#isaac').attr("src","images/hit.gif");
+
+            $('#isaac').css("height","200px");
+            $('#isaac').css("width","200px");
+
+
+            setTimeout(hitMessage, 1000);
+
+
+        }
+
+    }
 }
-
-
-
+//}
 
 window.onload = init;
+
