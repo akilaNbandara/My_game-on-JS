@@ -66,13 +66,11 @@ function hitMessage() {
 //     alert('Oops! You\'ve been hit by a car!')
 //     window.scrollTo(0,0);
 //     window.location.reload();
-    if(prompt('Alert For your User!')){
-      window.scrollTo(34,22);
-    }
-    else{
-      window.location.reload();
-      window.scrollTo(0,0);
-    }
+    isaac.style.left = 50 + 'vw';
+    isaac.style.top = '10px';
+    window.scrollTo(0,0);
+    alert('Oops! You\'ve been hit by a car!');
+    window.location.reload();
 }
 var collision = setInterval(collisionDetect, 50);
 
