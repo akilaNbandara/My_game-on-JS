@@ -64,13 +64,11 @@ function moveSelection(evt) {
 }
 function hitMessage() {
 //     alert('Oops! You\'ve been hit by a car!')
-//     window.scrollTo(0,0);
-//     window.location.reload();
-    isaac.style.left = 50 + 'vw';
-    isaac.style.top = '10px';
-    window.scrollTo(0,0);
+     window.scrollTo(0,0);
+     window.location.reload();
+    
     alert('Oops! You\'ve been hit by a car!');
-    window.location.href = "index.php";
+    
 }
 var collision = setInterval(collisionDetect, 50);
 
