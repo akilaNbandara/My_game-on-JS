@@ -63,9 +63,14 @@ function moveSelection(evt) {
 
 }
 function hitMessage() {
-    alert('Oops! You\'ve been hit by a car!')
-    window.scrollTo(0,0);
-    window.location.href = "index.php";
+//     alert('Oops! You\'ve been hit by a car!')
+//     window.scrollTo(0,0);
+//     window.location.reload();
+    if(alert('Alert For your User!')){}
+    else{
+      window.location.reload();
+      window.scrollTo(0,0);
+    }
 }
 var collision = setInterval(collisionDetect, 50);
 
