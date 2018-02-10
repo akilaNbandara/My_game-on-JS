@@ -70,7 +70,7 @@ function hitMessage() {
     isaac.style.top = '10px';
     window.scrollTo(0,0);
     alert('Oops! You\'ve been hit by a car!');
-    window.location.reload();
+    window.location.href = "index.php";
 }
 var collision = setInterval(collisionDetect, 50);
 
