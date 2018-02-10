@@ -64,9 +64,8 @@ function moveSelection(evt) {
 }
 function hitMessage() {
 //     alert('Oops! You\'ve been hit by a car!')
-     //window.scrollTo(0,0);
-     window.location.reload(true);
-    
+     window.scrollTo(0,0);
+     window.location.reload();
     alert('Oops! You\'ve been hit by a car!');
     
 }
@@ -99,10 +98,11 @@ function collisionDetect() {
 var win = setInterval(Finished, 100);
 
 function winMessage() {
-    alert("You Win! Congrats!!!!!!!");
     window.scrollTo(0, 0);
 
     window.location.reload();
+    alert("You Win! Congrats!!!!!!!");
+    
     }
 function Finished() {
     if (isaac.offsetTop > finish.offsetTop) {
