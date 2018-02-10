@@ -6,20 +6,20 @@ function init() {
   isaac.style.left = 50 + 'vw';
   isaac.style.top = '125px';
     window.addEventListener('keydown', moveSelection);
-    window.addEventListener('keyup', noMoment);
+
 }
 
 var finish = document.getElementById('finish');
 
 function moveRight(){
   if (isaac.style.left != 95 + "vw") {
-    isaac.style.left = parseInt(isaac.style.left) + 5 + 'vw';               //checked
+    isaac.style.left = parseInt(isaac.style.left) + 5 + 'vw';
   }
 }
 
 function moveLeft(){
   if (isaac.style.left != 0 + "vw"){
-    isaac.style.left = parseInt(isaac.style.left) - 5 + 'vw';                // checked
+    isaac.style.left = parseInt(isaac.style.left) - 5 + 'vw';
   }
 }
 
@@ -27,13 +27,13 @@ function moveUp(){
 
   if (isaac.style.top != 125 + "px") {
       $('#isaac').attr("src","images/cross.gif");
-    isaac.style.top = parseInt(isaac.style.top) - 40 + 'px';                //chw
+    isaac.style.top = parseInt(isaac.style.top) - 40 + 'px';
 
   }
 }
 function moveDown(){
 
-    if (isaac.style.top!=700+"px") {
+    if (isaac.style.top!=805+"px") {
         $('#isaac').attr("src","images/cross.gif");
         isaac.style.top = parseInt(isaac.style.top) + 40 + 'px';
 
@@ -44,25 +44,11 @@ function wait() {
     $('#isaac').attr("src","images/wait.gif");
 }
 
-function noMoment(event) {
-    switch (event.keyCode) {
-        case 37:
-                                                      //checked
-        case 39:
-
-        case 38:
-
-        case 40:
-
-        default: wait();
-    }
-}
-
 function moveSelection(evt) {
   switch (evt.keyCode) {
       case 37:
       moveLeft();
-      break;                                            //checked
+      break;
       case 39:
       moveRight();
       break;
@@ -99,15 +85,30 @@ function collisionDetect() {
             $('#isaac').css("height","200px");
             $('#isaac').css("width","200px");
 
-
-            setTimeout(hitMessage, 1000);
+            $('#isaac').stop();
+            setTimeout(hitMessage, 250);
 
 
         }
 
     }
 }
-//}
+var win = setInterval(Finished, 100);
 
+function winMessage() {
+    alert("You Win! Congrats!!!!!!!");
+    window.scrollTo(0, 0);
+
+    window.location.reload();
+    }
+function Finished() {
+    if (isaac.offsetTop > finish.offsetTop) {
+
+        $('#isaac').attr("src","images/wait.gif");
+        $('#isaac').stop();
+        setTimeout(moveSelection,5)
+        setTimeout(winMessage, 50);
+    }
+}
 window.onload = init;
 
