@@ -65,7 +65,7 @@ function moveSelection(evt) {
 function hitMessage() {
     alert('Oops! You\'ve been hit by a car!')
     window.scrollTo(0,0);
-    window.location.reload();
+    window.location.href = "index.php";
 }
 var collision = setInterval(collisionDetect, 50);
 
