@@ -66,7 +66,9 @@ function hitMessage() {
 //     alert('Oops! You\'ve been hit by a car!')
 //     window.scrollTo(0,0);
 //     window.location.reload();
-    if(alert('Alert For your User!')){}
+    if(prompt('Alert For your User!')){
+      window.scrollTo(34,22);
+    }
     else{
       window.location.reload();
       window.scrollTo(0,0);
