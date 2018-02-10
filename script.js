@@ -64,8 +64,8 @@ function moveSelection(evt) {
 }
 function hitMessage() {
 //     alert('Oops! You\'ve been hit by a car!')
-     window.scrollTo(0,0);
-     window.location.reload();
+     //window.scrollTo(0,0);
+     window.location.reload(true);
     
     alert('Oops! You\'ve been hit by a car!');
     
